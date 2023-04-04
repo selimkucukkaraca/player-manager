@@ -1,0 +1,58 @@
+scalar DateTime
+
+
+type Query{
+    getAllPlayers(page: Int!,size: Int!) : [PlayerDto]
+    getAllTeams(page: Int!,size: Int!) : [TeamDto]
+}
+
+
+type Mutation{
+    createPlayer(request: CreatePlayerRequest!) : PlayerDto
+    deletePlayer(playerId: String) : Boolean
+    createTeam(request: CreateTeamRequest!) : TeamDto
+    deleteTeam(name: String) : Boolean
+}
+
+
+type TeamDto{
+    name : String
+    createDate : DateTime
+    updateDate : DateTime
+}
+
+type PlayerDto{
+    name: String
+    lastName : String
+    team : TeamDto
+    playerPosition : PlayerPosition
+    playerId: String
+    createDate : DateTime
+    updateDate : DateTime
+}
+
+input CreatePlayerRequest{
+    name: String!
+    lastName : String!
+    teamName : String!
+    playerPosition : PlayerPosition!
+}
+
+input CreateTeamRequest{
+    name : String!
+}
+
+enum PlayerPosition{
+    POINT_GUARD
+    SHOOTING_GUARD
+    SMALL_FORWARD
+    POWER_FORWARD
+    CENTER
+}
+
+enum LogType{
+    CREATE
+    UPDATE
+    DELETE
+    LIST
+}

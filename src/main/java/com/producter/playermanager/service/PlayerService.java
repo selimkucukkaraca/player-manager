@@ -7,45 +7,45 @@ import com.producter.playermanager.exception.NotFoundException;
 import com.producter.playermanager.model.Player;
 import com.producter.playermanager.model.Team;
 import com.producter.playermanager.repository.PlayerRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import static com.producter.playermanager.util.Constants.*;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class PlayerService {
 
     private final PlayerRepository playerRepository;
     private final PlayerConverter playerConverter;
     private final TeamService teamService;
 
+    public PlayerDto createPlayer(CreatePlayerRequest request){
+        var team = teamService.getTeamByName(request.getTeamName());
 
-    public PlayerService(PlayerRepository playerRepository, PlayerConverter playerConverter, TeamService teamService) {
-        this.playerRepository = playerRepository;
-        this.playerConverter = playerConverter;
-        this.teamService = teamService;
-    }
+        if (checkTeamPlayerCount(team)){
+            throw new RuntimeException("");
+        }
 
-    public PlayerDto save(CreatePlayerRequest request){
-        Team team = teamService.getTeamByName(request.getName());
         var saved = playerConverter.toEntity(request,team);
-        // kisi sayisini kontrol et
         playerRepository.save(saved);
         return playerConverter.convertDto(saved);
     }
 
-    public List<PlayerDto> getAll(int page, int size){
+    public List<PlayerDto> getAllPlayers(int page, int size){
         Pageable pageable = PageRequest.of(page,size);
 
         return playerRepository.findAll(pageable)
                 .stream()
                 .map(playerConverter::convertDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
-    public void delete(String playerId){
+    public void deletePlayer(String playerId){
         var player = getPlayerByPlayerId(playerId);
         playerRepository.delete(player);
     }
@@ -54,6 +54,17 @@ public class PlayerService {
         return playerRepository.findPlayerByPlayerId(playerId)
                 .orElseThrow(() -> new NotFoundException("Player not fount, playerId: " + playerId));
 
+    }
+
+    private List<Player> getPlayerByTeamName(String teamName){
+        return playerRepository.findAll()
+                .stream()
+                .filter(player -> player.getTeam().getName().equals(teamName))
+                .toList();
+    }
+
+    private boolean checkTeamPlayerCount(Team team){
+        return getPlayerByTeamName(team.getName()).size() >= TEAM_PLAYER_LIMIT;
     }
 
 }

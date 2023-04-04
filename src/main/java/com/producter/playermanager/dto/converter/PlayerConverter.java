@@ -4,16 +4,14 @@ import com.producter.playermanager.dto.PlayerDto;
 import com.producter.playermanager.dto.request.CreatePlayerRequest;
 import com.producter.playermanager.model.Player;
 import com.producter.playermanager.model.Team;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class PlayerConverter {
 
     private final TeamConverter teamConverter;
-
-    public PlayerConverter(TeamConverter teamConverter) {
-        this.teamConverter = teamConverter;
-    }
 
     public PlayerDto convertDto(Player from) {
         return new PlayerDto(

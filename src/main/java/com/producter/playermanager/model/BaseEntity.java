@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
+import java.time.OffsetDateTime;
 
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public abstract class BaseEntity {
 
     @CreationTimestamp
-    private LocalDateTime createDate;
-    private LocalDateTime updateDate;
+    private OffsetDateTime createDate;
+    private OffsetDateTime updateDate;
 
 }

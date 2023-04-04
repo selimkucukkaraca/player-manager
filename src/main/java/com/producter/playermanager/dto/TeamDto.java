@@ -1,9 +1,9 @@
 package com.producter.playermanager.dto;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 public record TeamDto(
         String name,
-        LocalDateTime createDate,
-        LocalDateTime updateDate) {
+        OffsetDateTime createDate,
+        OffsetDateTime updateDate) {
 }
