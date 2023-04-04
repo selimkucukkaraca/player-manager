@@ -18,7 +18,7 @@ public class Player extends BaseEntity {
     private Long id;
     private String name;
     private String lastName;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Team team;
     @Enumerated(EnumType.STRING)
     private PlayerPosition playerPosition;

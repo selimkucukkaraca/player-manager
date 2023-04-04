@@ -6,14 +6,12 @@ type Query{
     getAllTeams(page: Int!,size: Int!) : [TeamDto]
 }
 
-
 type Mutation{
     createPlayer(request: CreatePlayerRequest!) : PlayerDto
     deletePlayer(playerId: String) : Boolean
     createTeam(request: CreateTeamRequest!) : TeamDto
     deleteTeam(name: String) : Boolean
 }
-
 
 type TeamDto{
     name : String
