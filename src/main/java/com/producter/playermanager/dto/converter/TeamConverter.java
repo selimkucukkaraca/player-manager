@@ -8,11 +8,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class TeamConverter {
 
-    public TeamDto convertDto(Team from){
-        return new TeamDto(from.getName());
+    public TeamDto convertDto(Team from) {
+        return new TeamDto(
+                from.getName(),
+                from.getCreateDate(),
+                from.getUpdateDate()
+        );
     }
 
-    public Team toEntity(CreateTeamRequest request){
+    public Team toEntity(CreateTeamRequest request) {
         return new Team(request.getName());
     }
 }

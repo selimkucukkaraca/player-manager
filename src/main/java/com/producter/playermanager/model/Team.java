@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Team extends BaseEntity{
+public class Team extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class CreatePlayerRequest {
-
     private String name;
     private String lastName;
     private Team team;

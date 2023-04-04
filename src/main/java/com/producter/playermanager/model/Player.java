@@ -3,13 +3,15 @@ package com.producter.playermanager.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Player extends BaseEntity{
+public class Player extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,6 +22,7 @@ public class Player extends BaseEntity{
     private Team team;
     @Enumerated(EnumType.STRING)
     private PlayerPosition playerPosition;
+    private String playerId = UUID.randomUUID().toString();
 
     public Player(String name, String lastName, Team team, PlayerPosition playerPosition) {
         this.name = name;

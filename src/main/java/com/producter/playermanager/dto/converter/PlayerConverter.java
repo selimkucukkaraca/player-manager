@@ -15,16 +15,19 @@ public class PlayerConverter {
         this.teamConverter = teamConverter;
     }
 
-    public PlayerDto convertDto(Player from){
+    public PlayerDto convertDto(Player from) {
         return new PlayerDto(
                 from.getName(),
                 from.getLastName(),
                 teamConverter.convertDto(from.getTeam()),
-                from.getPlayerPosition()
+                from.getPlayerPosition(),
+                from.getPlayerId(),
+                from.getCreateDate(),
+                from.getUpdateDate()
         );
     }
 
-    public Player toEntity(CreatePlayerRequest request, Team team){
+    public Player toEntity(CreatePlayerRequest request, Team team) {
         return new Player(
                 request.getName(),
                 request.getLastName(),

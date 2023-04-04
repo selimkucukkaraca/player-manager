@@ -1,4 +1,9 @@
 package com.producter.playermanager.dto;
 
-public record TeamDto(String name) {
+import java.time.LocalDateTime;
+
+public record TeamDto(
+        String name,
+        LocalDateTime createDate,
+        LocalDateTime updateDate) {
 }
