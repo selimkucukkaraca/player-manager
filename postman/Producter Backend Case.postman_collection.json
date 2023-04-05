@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "e506035d-127b-4fc4-bb0c-51f577684ca5",
+		"name": "Producter Backend Case",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "team",
+			"item": [
+				{
+					"name": "save team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation{\r\n    createTeam(request: {name: \"samsun\"}){\r\n        name\r\n        createDate\r\n        updateDate\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all teams",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\r\n    getAllTeams(page : 1, size : 1){\r\n        name \r\n        createDate \r\n        updateDate\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation{\r\n    deleteTeam(name: \"Bursa\")\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "player",
+			"item": [
+				{
+					"name": "save player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation{\r\n    createPlayer(request: {name: \"Selim\", lastName: \"Karaca\", teamName: \"Bursa\", playerPosition: CENTER}){\r\n        name\r\n        lastName\r\n        name\r\n        playerId\r\n        playerPosition\r\n        createDate\r\n        updateDate\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\r\n    getAllPlayers(page : 1, size : 5){\r\n        name\r\n        lastName\r\n        name\r\n        playerId\r\n        playerPosition\r\n        createDate\r\n        updateDate\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete player",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation{\r\n    deletePlayer(playerId: \"5d55f056-f9c8-49f7-8c0b-1d50ae41b39f\")\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
