@@ -18,18 +18,18 @@ public class PlayerController {
     private final PlayerService playerService;
 
     @MutationMapping
-    PlayerDto createPlayer(@Argument CreatePlayerRequest request){
+    public PlayerDto createPlayer(@Argument CreatePlayerRequest request){
         return playerService.createPlayer(request);
     }
 
     @MutationMapping
-    Boolean deletePlayer(@Argument String playerId){
+    public Boolean deletePlayer(@Argument String playerId){
         playerService.deletePlayer(playerId);
         return true;
     }
 
     @QueryMapping
-    List<PlayerDto> getAllPlayers(@Argument int page, @Argument int size){
+    public List<PlayerDto> getAllPlayers(@Argument int page, @Argument int size){
         return playerService.getAllPlayers(page, size);
     }
 }

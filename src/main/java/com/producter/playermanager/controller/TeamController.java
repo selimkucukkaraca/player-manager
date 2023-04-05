@@ -19,18 +19,18 @@ public class TeamController {
     private final TeamService teamService;
 
     @MutationMapping
-    TeamDto createTeam(@Argument CreateTeamRequest request){
+    public TeamDto createTeam(@Argument CreateTeamRequest request){
         return teamService.createTeam(request);
     }
 
     @MutationMapping
-    Boolean deleteTeam(@Argument String name){
+    public Boolean deleteTeam(@Argument String name){
         teamService.deleteTeam(name);
         return true;
     }
 
     @QueryMapping
-    List<TeamDto> getAllTeams(@Argument int page, @Argument int size){
+    public List<TeamDto> getAllTeams(@Argument int page, @Argument int size){
         return teamService.getAllTeams(page, size);
     }
 }
