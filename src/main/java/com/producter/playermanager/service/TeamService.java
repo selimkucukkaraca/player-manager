@@ -3,7 +3,7 @@ package com.producter.playermanager.service;
 import com.producter.playermanager.dto.TeamDto;
 import com.producter.playermanager.dto.converter.TeamConverter;
 import com.producter.playermanager.dto.request.CreateTeamRequest;
-import com.producter.playermanager.exception.NotFoundException;
+import com.producter.playermanager.exception.generic.NotFoundException;
 import com.producter.playermanager.exception.generic.GenericExistException;
 import com.producter.playermanager.model.Log;
 import com.producter.playermanager.model.LogType;

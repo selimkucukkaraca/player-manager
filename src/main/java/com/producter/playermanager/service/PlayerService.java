@@ -3,7 +3,7 @@ package com.producter.playermanager.service;
 import com.producter.playermanager.dto.PlayerDto;
 import com.producter.playermanager.dto.converter.PlayerConverter;
 import com.producter.playermanager.dto.request.CreatePlayerRequest;
-import com.producter.playermanager.exception.NotFoundException;
+import com.producter.playermanager.exception.generic.NotFoundException;
 import com.producter.playermanager.exception.PlayerCountLimitExceededException;
 import com.producter.playermanager.model.Log;
 import com.producter.playermanager.model.LogType;
